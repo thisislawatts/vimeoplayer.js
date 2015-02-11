@@ -1,0 +1,27 @@
+{
+  "name": "vimeojs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "vimeo.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:thisislawatts/vimeoplayer.js.git"
+  },
+  "keywords": [
+    "vimeo"
+  ],
+  "author": "Luke Watts",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/thisislawatts/vimeoplayer.js/issues"
+  },
+  "homepage": "https://github.com/thisislawatts/vimeoplayer.js",
+  "devDependencies": {
+    "gulp": "^3.8.11",
+    "gulp-load-plugins": "^0.8.0",
+    "gulp-uglify": "^1.1.0"
+  }
+}
