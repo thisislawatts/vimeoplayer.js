@@ -1,5 +1,5 @@
 {
-  "name": "vimeojs",
+  "name": "vimeoplayer",
   "version": "1.0.0",
   "description": "",
   "main": "vimeo.js",
@@ -22,6 +22,7 @@
   "devDependencies": {
     "gulp": "^3.8.11",
     "gulp-load-plugins": "^0.8.0",
+    "gulp-strip-debug": "^1.0.2",
     "gulp-uglify": "^1.1.0"
   }
 }
