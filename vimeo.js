@@ -23,7 +23,6 @@
 			'position' : 'relative'
 		});
 
-		// Replace with imagesLoaded
 		_self.$iframe.css({
 			border   : '0',
 			position : 'absolute',
@@ -34,7 +33,9 @@
 			zIndex   : -1 
 		});
 
-		_self.el.appendChild( _self.$iframe );
+		console.log(_self.el);
+
+		_self.el.appendChild( _self.iframe );
 
 		_self.getDimensions();
 
