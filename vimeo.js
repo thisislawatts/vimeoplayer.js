@@ -1,3 +1,4 @@
+/* globals jQuery */
 'use strict';
 
 (function($) {
@@ -8,6 +9,22 @@
 
 		var _self = this;
 
+		_self.defaultOptions = {
+			width		: false,
+			maxwidth	: false,
+			height		: false,
+			maxheight	: false,
+			byline		: true,
+			title		: true,
+			portrait	: false,
+			color		: false,
+			callback	: false,
+			autoplay	: false,
+			loop		: false,
+			autopause	: true,
+			xhtml		: false
+		};
+
 		_self.loadCount = 0;
 		_self.playing = false;
 		_self.el = el;
@@ -17,7 +34,10 @@
 		_self.$img = _self.$el.find('img'),
 		_self.$iframe = $( _self.iframe );
 
-		_self.$iframe.attr('src', 'http://player.vimeo.com/video/' + _self.$el.attr('href').split('/').pop() + '?api=1&player_id=' + _self.id );
+		_self.options = _self.getOptions();
+		console.log( 'Options:', _self.options );
+
+		_self.$iframe.attr('src', _self.getVimeoUrl() );
 
 		_self.$el.css({
 			'position' : 'relative'
@@ -33,28 +53,59 @@
 			zIndex   : -1 
 		});
 
-		console.log(_self.el);
-
 		_self.el.appendChild( _self.iframe );
 
 		_self.getDimensions();
 
 		// Event Handlers
 		_self.$el.on('click', function(evt) {
-			_self.$el.addClass('vimeojs__loading');
-			_self._post( 'play' );
-			_self.$img.fadeOut(function() {
-				_self.$iframe.css('zIndex', 1);
-			});
-			_self.playing = true;
-
 			evt.preventDefault();
+			_self.start();
 		});
 
 		$(window).on('message', function(e) {
 			_self.onMessageReceived(e);
 		});
+
+		if ( _self.options.autoplay ) {
+			_self.start();
+		}
 	};
+
+	VimeoPlayer.prototype.start = function() {
+		var _self = this;
+
+		_self.$el.addClass('vimeojs__loading');
+		_self._post( 'play' );
+		_self.$img.fadeOut(function() {
+			_self.$iframe.css('zIndex', 1);
+		});
+		_self.playing = true;
+	}
+
+	VimeoPlayer.prototype.getOptions = function() {
+		var _self = this,
+			userOptions = {},
+			data;
+
+		data = _self.el.dataset;
+
+		console.log( 'Defaults:', _self.defaultOptions, data );
+
+		for ( var prop in data ) {
+			prop = prop.replace('vimeo', '').toLowerCase();
+
+			var value = data[prop];
+
+			if ( prop ) {
+				value = value === undefined;
+
+				userOptions[prop] = value;
+			}
+		}
+
+		return jQuery.extend( _self.defaultOptions, userOptions )
+	}
 
 	VimeoPlayer.prototype._generateID = function() {
 		var text = '';
@@ -85,6 +136,26 @@
 
 		}
 	};
+
+	VimeoPlayer.prototype.getVimeoUrl = function() {
+		var _self = this,
+			query_params = [
+			'player_id=' + _self.id,
+			'api=1'
+		];
+
+		console.log( 'For URL:', _self.options );
+
+		for ( var prop in _self.options ) {
+			if ( _self.options.hasOwnProperty( prop ) ) {
+				query_params.push( prop + '=' + (_self.options[prop] === true ? 1 : 0) );
+			}
+		}
+
+		console.log( "Query_params: ", query_params );
+
+		return 'http://player.vimeo.com/video/' + _self.$el.attr('href').split('/').pop() + '?' + query_params.join('&');
+	}
 
 	VimeoPlayer.prototype.ready = function() {
 		var _self = this;
