@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html ldir="ltr" lang="en-US" class="no-js">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+
+	<title>Vimeo.js</title>
+
+	<style>
+		a[data-vimeo] {
+			display: inline-block;
+		}
+
+		a[data-vimeo] img {
+			display: block;
+		}
+
+        #VimeoHolder {
+            position: fixed !important;
+            top: 0;
+            left: 0;
+            width: 110% !important;
+            height: 113% !important;
+            margin: -3em 0 0 -8em;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+	</style>
+
+</head>
+<body>
+	<h1>Vimeo.js</h1>
+
+	<p>Play video content with as little as possible</p>
+
+<a id="VimeoHolder" href="https://vimeo.com/126357452" data-vimeo data-vimeo-loop data-vimeo-autoplay>
+	<img src="http://posterfra.me/https://vimeo.com/126357452" alt="Johnny Thaw on Vimeo"/>
+</a>
+
+<script src="jquery.js"></script>
+<script src="vimeo.js"></script>
+</body>
+</html>
