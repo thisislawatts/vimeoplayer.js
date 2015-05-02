@@ -40,7 +40,8 @@
 		_self.$iframe.attr('src', _self.getVimeoUrl() );
 
 		_self.$el.css({
-			'position' : 'relative'
+			'display' : 'block',
+			'position' : 'relative',
 		});
 
 		_self.$iframe.css({
