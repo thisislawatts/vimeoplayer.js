@@ -30,6 +30,10 @@
 		_self.el = el;
 		_self.$el = $(el).addClass('vimeojs--wrapper'),
 		_self.id = _self._generateID();
+		_self.iframeContainer = document.createElement('div');
+		_self.iframeContainer.className = 'vimeojs--iframe-wrapper';
+		_self.$iframeContainer = jQuery(_self.iframeContainer);
+
 		_self.iframe = document.createElement('iframe');
 		_self.$img = _self.$el.find('img'),
 		_self.$iframe = $( _self.iframe );
@@ -54,7 +58,8 @@
 			zIndex   : -1 
 		});
 
-		_self.el.appendChild( _self.iframe );
+		_self.iframeContainer.appendChild( _self.iframe );
+		_self.el.appendChild(_self.iframeContainer);
 
 		_self.getDimensions();
 
@@ -79,10 +84,10 @@
 		_self.$el.addClass('vimeojs__loading');
 		_self._post( 'play' );
 		_self.$img.fadeOut(function() {
-			_self.$iframe.css('zIndex', 1);
+			_self.$iframe.css('zIndex', 1).addClass('s__now-playing');
 		});
 		_self.playing = true;
-	}
+	};
 
 	VimeoPlayer.prototype.getOptions = function() {
 		var _self = this,
@@ -90,8 +95,6 @@
 			data;
 
 		data = _self.el.dataset;
-
-		console.log( 'Defaults:', _self.defaultOptions, data );
 
 		for ( var prop in data ) {
 			prop = prop.replace('vimeo', '').toLowerCase();
@@ -121,7 +124,8 @@
 
 
 	VimeoPlayer.prototype.getDimensions = function() {
-		var _self = this;
+		var _self = this,
+			w, h;
 
 		if ( _self.$img.width() < 10 && _self.loadCount < 10 ) {
 			setTimeout(function() {
@@ -129,12 +133,14 @@
 				_self.loadCount++;
 			}, 750);
 		} else {
-	
-			_self.$el.css({
-				width: _self.$img.width(),
-				height: _self.$img.height(),
-			});
+			w = _self.$img.width();
+			h = _self.$img.height();
 
+			_self.$iframeContainer.css({
+				paddingTop	: ((h / w) * 100) + '%',
+				height		: 0,
+				width		: '100%'
+			});
 		}
 	};
 
