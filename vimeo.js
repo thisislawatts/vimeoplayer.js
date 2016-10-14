@@ -36,7 +36,11 @@
 
 		_self.iframe = document.createElement('iframe');
 		_self.$img = _self.$el.find('img'),
-		_self.$iframe = $( _self.iframe );
+		_self.$img = _self.$el.find('img').css({
+			position : 'absolute',
+			top 	 :  0,
+			left 	 :  0
+		}),
 
 		_self.options = _self.getOptions();
 		console.log( 'Options:', _self.options );
