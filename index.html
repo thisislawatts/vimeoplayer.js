@@ -1,99 +1,104 @@
 <!DOCTYPE html>
 <html ldir="ltr" lang="en-US" class="no-js">
+
 <head>
-	<meta charset="UTF-8" />
-	<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
 
-	<title>Vimeo.js</title>
+    <title>Vimeo.js</title>
 
-	<style>
-		a[data-vimeo] {
-			display: inline-block;
-		}
-
-		a[data-vimeo] img {
-			display: block;
-		}
-	</style>
+    <style>
+        a[data-vimeo] {
+            display: inline-block;
+        }
+        
+        a[data-vimeo] img {
+            display: block;
+        }
+    </style>
 
 </head>
+
 <body>
-	<h1>Vimeo.js</h1>
+    <h1>Vimeo.js</h1>
 
-	<p>Play video content with as little as possible</p>
+    <p>Play video content with as little as possible</p>
 
-<a href="https://vimeo.com/65039166" data-vimeo data-vimeo-loop data-vimeo-autoplay>
-	<img src="http://posterfra.me/https://vimeo.com/65039166" alt="Johnny Thaw on Vimeo"/>
-</a>
+    <a href="https://vimeo.com/65039166" data-vimeo data-vimeo-loop data-vimeo-autoplay>
+        <img src="http://posterfra.me/https://vimeo.com/65039166" alt="Johnny Thaw on Vimeo" />
+    </a>
 
-<table class="params">
-    <tbody><tr>
-        <td class="param">url</td>
-        <td>(required) The Vimeo URL for a video.</td>
-    </tr>
-    <tr>
-        <td class="param">width</td>
-        <td>The exact width of the video. Defaults to original size.</td>
-    </tr>
-    <tr>
-        <td class="param">maxwidth</td>
-        <td>Same as width, but video will not exceed original size.</td>
-    </tr>
-    <tr>
-        <td class="param">height</td>
-        <td>The exact height of the video. Defaults to original size.</td>
-    </tr>
-    <tr>
-        <td class="param">maxheight</td>
-        <td>Same as height, but video will not exceed original size.</td>
-    </tr>
-    <tr>
-        <td class="param">byline</td>
-        <td>Show the byline on the video. Defaults to <code>true</code>.</td>
-    </tr>
-    <tr>
-        <td class="param">title</td>
-        <td>Show the title on the video. Defaults to <code>true</code>.</td>
-    </tr>
-    <tr>
-        <td class="param">portrait</td>
-        <td>Show the user’s portrait on the video. Defaults to <code>true</code>.</td>
-    </tr>
-    <tr>
-        <td class="param">color</td>
-        <td>Specify the color of the video controls.</td>
-    </tr>
-    <tr>
-        <td class="param">callback</td>
-        <td>When returning JSON, wrap in this function.</td>
-    </tr>
-    <tr>
-        <td class="param">autoplay</td>
-        <td>Automatically start playback of the video. Defaults to <code>false</code>.</td>
-    </tr>
-    <tr>
-        <td class="param">loop</td>
-        <td>Play the video again automatically when it reaches the end. Defaults to <code>false</code>.</td>
-    </tr>
-    <tr>
-        <td class="param">autopause</td>
-        <td>Pause this video automatically when another one plays. Defaults to <code>true</code>.</td>
-    </tr>
-    <tr>
-        <td class="param">xhtml</td>
-        <td>Make the embed code XHTML compliant. Defaults to <code>false</code>.</td>
-    </tr>
-    <tr>
-        <td class="param">api</td>
-        <td>Enable the JavaScript API. Defaults to false.</td>
-    </tr>
-    <tr>
-        <td class="param">player_id</td>
-        <td>A unique id for the player that will be passed back with all JavaScript API responses.</td>
-    </tr>
-</tbody></table>
+    <table class="params">
+        <tbody>
+            <tr>
+                <td class="param">url</td>
+                <td>(required) The Vimeo URL for a video.</td>
+            </tr>
+            <tr>
+                <td class="param">width</td>
+                <td>The exact width of the video. Defaults to original size.</td>
+            </tr>
+            <tr>
+                <td class="param">maxwidth</td>
+                <td>Same as width, but video will not exceed original size.</td>
+            </tr>
+            <tr>
+                <td class="param">height</td>
+                <td>The exact height of the video. Defaults to original size.</td>
+            </tr>
+            <tr>
+                <td class="param">maxheight</td>
+                <td>Same as height, but video will not exceed original size.</td>
+            </tr>
+            <tr>
+                <td class="param">byline</td>
+                <td>Show the byline on the video. Defaults to <code>true</code>.</td>
+            </tr>
+            <tr>
+                <td class="param">title</td>
+                <td>Show the title on the video. Defaults to <code>true</code>.</td>
+            </tr>
+            <tr>
+                <td class="param">portrait</td>
+                <td>Show the user’s portrait on the video. Defaults to <code>true</code>.</td>
+            </tr>
+            <tr>
+                <td class="param">color</td>
+                <td>Specify the color of the video controls.</td>
+            </tr>
+            <tr>
+                <td class="param">callback</td>
+                <td>When returning JSON, wrap in this function.</td>
+            </tr>
+            <tr>
+                <td class="param">autoplay</td>
+                <td>Automatically start playback of the video. Defaults to <code>false</code>.</td>
+            </tr>
+            <tr>
+                <td class="param">loop</td>
+                <td>Play the video again automatically when it reaches the end. Defaults to <code>false</code>.</td>
+            </tr>
+            <tr>
+                <td class="param">autopause</td>
+                <td>Pause this video automatically when another one plays. Defaults to <code>true</code>.</td>
+            </tr>
+            <tr>
+                <td class="param">xhtml</td>
+                <td>Make the embed code XHTML compliant. Defaults to <code>false</code>.</td>
+            </tr>
+            <tr>
+                <td class="param">api</td>
+                <td>Enable the JavaScript API. Defaults to false.</td>
+            </tr>
+            <tr>
+                <td class="param">player_id</td>
+                <td>A unique id for the player that will be passed back with all JavaScript API responses.</td>
+            </tr>
+        </tbody>
+    </table>
 
-<script src="jquery.js"></script>
-<script src="vimeo.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="vimeo.js"></script>
 </body>
+
 </html>
